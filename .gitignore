@@ -1,9 +1,11 @@
+# Repos specific
+*.csv
+wellness_checker@.service
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-*.csv
 
 # C extensions
 *.so
