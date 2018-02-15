@@ -63,7 +63,7 @@ if __name__ == "__main__":
     if 'actions' not in notify2.get_server_caps():
         sys.exit(1)
 
-    if decide_to_ask(180, 30):
+    if decide_to_ask(60, 5):
         print('Asking about happiness.')
         ask_about_happiness()
     else:
