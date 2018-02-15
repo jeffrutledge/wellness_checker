@@ -4,6 +4,10 @@
 #
 # This enables a timer that periodically calls the wellness checker
 
+########### Removes Failed to init server warnings ##############
+### dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+#################################################################
+
 # move to directory of script
 cd "$(dirname "$0")"
 
