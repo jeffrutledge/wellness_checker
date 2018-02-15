@@ -5,6 +5,7 @@ import sys
 import csv
 import datetime
 import numpy as np
+import os
 
 import gi
 gi.require_version('Gtk', '3.0')
@@ -31,8 +32,8 @@ def closed_callback(notification):
     Gtk.main_quit()
 
 
-def decide_to_ask(freq_to_ask, freq_run):
-    return random.random() < freq_to_ask / freq_run
+def decide_to_ask(desired_expected_interval, run_interval):
+    return random.random() < run_interval / desired_expected_interval
 
 
 def ask_about_happiness():
@@ -54,13 +55,15 @@ def ask_about_happiness():
 
 
 if __name__ == "__main__":
+    os.chdir(os.path.dirname(os.path.realpath(__file__)))
+
     if not notify2.init('Wellness Checker', mainloop='glib'):
         sys.exit(1)
 
     if 'actions' not in notify2.get_server_caps():
         sys.exit(1)
 
-    if decide_to_ask(1 / 60, 1 / 10):
+    if decide_to_ask(180, 30):
         print('Asking about happiness.')
         ask_about_happiness()
     else:

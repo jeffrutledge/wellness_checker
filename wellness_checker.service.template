@@ -1,0 +1,6 @@
+[Unit]
+Description=Run python script to ask about wellness
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 PATH_TO_SCRIPT
