@@ -24,9 +24,12 @@ path_to_script=`readlink -f ./ask_about_happiness.py`
 sed "s|PATH_TO_SCRIPT|$path_to_script|" wellness_checker.service.template > wellness_checker.service
 
 # Copy and activate system daemon components
-sudo cp ./wellness_checker@.service ~/.config/systemd/user/
-sudo cp ./wellness_checker@.timer ~/.config/systemd/user/
-sudo systemctl --user enable wellness_checker.timer
-sudo systemctl --user start wellness_checker.timer
+echo "Copying wellness_checker.timer and wellness_checker.service to"
+echo "~/.config/systemd/user/ "
+sudo cp ./wellness_checker.service ~/.config/systemd/user/
+sudo cp ./wellness_checker.timer ~/.config/systemd/user/
+echo "Starting and enabling wellness_checker.timer"
+systemctl --user enable wellness_checker.timer
+systemctl --user start wellness_checker.timer
 
 exit 0
